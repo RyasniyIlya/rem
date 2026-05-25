@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Ilya Ryasniy, Web Developer and B2B Data Research Specialist." />
+  <title>Ilya Ryasniy | Web Developer Portfolio</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f7f9fc;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --card: #ffffff;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 22px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 92px 0 72px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 19px;
+      margin-bottom: 32px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .mini-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 8px;
+      flex: 0 0 9px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 28px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .skills {
+      background: var(--bg-soft);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .skill-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .project-preview {
+      height: 180px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.25), transparent 30%),
+        linear-gradient(135deg, #eef2ff, #f8fafc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-dark);
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .project-body {
+      padding: 24px;
+    }
+
+    .project-body h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .project-link {
+      display: inline-flex;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .project-link:hover {
+      color: var(--accent-dark);
+    }
+
+    .services {
+      background: var(--bg-soft);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-box {
+      border-radius: 24px;
+      background: #111827;
+      color: #fff;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .contact-box p {
+      color: #d1d5db;
+      margin-top: 10px;
+      max-width: 650px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .contact-links a {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 12px 16px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 0;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding: 64px 0 52px;
+      }
+
+      .skill-grid,
+      .projects-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="logo">Ilya<span>Ryasniy</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">Menu</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="eyebrow">Web Developer • B2B Data Research • AI Tools</div>
+          <h1>Clean websites and practical digital solutions for business.</h1>
+          <p>
+            I am Ilya Ryasniy. I create landing pages, simple business websites, frontend interfaces and structured B2B databases for sales, outreach and market research.
+          </p>
+          <div class="actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="hero-card fade-in">
+          <h3>Current focus</h3>
+          <ul class="mini-list">
+            <li><span class="dot"></span><span>Landing pages and business websites</span></li>
+            <li><span class="dot"></span><span>HTML, CSS, JavaScript and responsive layouts</span></li>
+            <li><span class="dot"></span><span>Simple frontend interfaces and React basics</span></li>
+            <li><span class="dot"></span><span>B2B lead lists, market research and databases</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">About</div>
+          <h2>Ilya Ryasniy — beginner web developer with practical commercial experience.</h2>
+          <p>
+            I have 3 years of self-practice in web development and hands-on experience from small projects and my first commercial project, B2B Base.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card fade-in">
+            <h3>Development background</h3>
+            <p>
+              I work with HTML, CSS, JavaScript, React, TypeScript basics, Next.js basics, WordPress basics and AI-assisted workflows. My focus is clean structure, responsive design and practical implementation.
+            </p>
+          </div>
+          <div class="card fade-in">
+            <h3>Business experience</h3>
+            <p>
+              B2B Base is my first commercial project. It helped me understand how digital products work in real business: offer structure, UI/UX, client needs, service presentation, data organization and ongoing project support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">Skills</div>
+          <h2>Technical stack and practical tools.</h2>
+          <p>My stack is focused on frontend development, simple websites, data research and AI-assisted execution.</p>
+        </div>
+
+        <div class="skill-grid">
+          <div class="skill-card fade-in">
+            <h3>HTML / CSS</h3>
+            <p>Intermediate. Page structure, sections, responsive layouts, forms and clean styling.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>JavaScript</h3>
+            <p>Basic / Intermediate. DOM logic, menus, forms, simple interactions and dynamic behavior.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>React / TypeScript</h3>
+            <p>Basic. Simple components, frontend structure, basic typing and interface logic.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>WordPress</h3>
+            <p>Basic. Landing pages, Elementor-style edits, content updates, forms and basic SEO.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>AI Tools</h3>
+            <p>Intermediate. Page structure, content drafts, design ideas, code improvement and visuals.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>B2B Research</h3>
+            <p>Intermediate. Company research, lead lists, market segmentation and database structure.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>Excel / Sheets</h3>
+            <p>Intermediate. Data cleaning, columns, filtering, duplicate removal and business-ready files.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>SEO Basics</h3>
+            <p>Basic. Headings, page titles, meta descriptions, content structure and simple optimization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">Projects</div>
+          <h2>Selected work and portfolio cases.</h2>
+          <p>These projects show my practical experience in web development, frontend structure and B2B data work.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card fade-in">
+            <div class="project-preview">B2B Base</div>
+            <div class="project-body">
+              <h3>B2B Base – B2B Database Project</h3>
+              <p>
+                My first commercial project focused on custom B2B company databases, lead lists and market research for sales outreach.
+              </p>
+              <a class="project-link" href="https://client-r47h.vercel.app/" target="_blank" rel="noreferrer">View project</a>
+              <div class="tags">
+                <span class="tag">Frontend</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">B2B Data</span>
+                <span class="tag">Excel</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-preview">Landing Page</div>
+            <div class="project-body">
+              <h3>Responsive Business Landing Page</h3>
+              <p>
+                A clean landing page concept for a small business with hero section, services, benefits, CTA and contact form structure.
+              </p>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-preview">Market Research</div>
+            <div class="project-body">
+              <h3>B2B Lead List & Market Database</h3>
+              <p>
+                Structured database work for collecting, cleaning and organizing companies by niche, region and business criteria.
+              </p>
+              <div class="tags">
+                <span class="tag">Research</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Data Cleaning</span>
+                <span class="tag">Lead Lists</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-preview">AI Page</div>
+            <div class="project-body">
+              <h3>AI-Assisted Landing Page Concept</h3>
+              <p>
+                A fast landing page prototype created with AI assistance and manually improved with frontend structure, CSS and responsive design.
+              </p>
+              <div class="tags">
+                <span class="tag">AI Tools</span>
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">Copywriting</span>
+                <span class="tag">UI</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">Services</div>
+          <h2>What I can help with.</h2>
+          <p>Simple, practical services for businesses that need a clear web presence or structured data.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="card fade-in">
+            <h3>Landing Pages</h3>
+            <p>Clean responsive landing pages for services, products, small businesses and digital offers.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>Frontend Tasks</h3>
+            <p>HTML/CSS/JS edits, responsive fixes, sections, simple components and page improvements.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>WordPress Edits</h3>
+            <p>Simple WordPress pages, content updates, Elementor edits, forms and basic SEO setup.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>B2B Databases</h3>
+            <p>Company databases, lead lists, market research and structured Excel/Google Sheets files.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>AI-Assisted Assets</h3>
+            <p>Landing page concepts, content structures, digital guides and quick visual prototypes.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>Project Support</h3>
+            <p>Ongoing improvements, small updates, communication, testing and maintenance support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box fade-in">
+          <div>
+            <h2>Let’s build something practical.</h2>
+            <p>
+              I can help with landing pages, simple websites, frontend fixes, WordPress edits and B2B data research.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:ryasniyilya@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/ilya-ryasniy-624636406/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.upwork.com/freelancers/~0173b7cc5f6f36d04a" target="_blank" rel="noreferrer">Upwork</a>
+            <a href="https://github.com/RyasniyIlya" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Ilya Ryasniy</span>
+      <span>Built with vanilla HTML, CSS and JavaScript.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const year = document.getElementById('year');
+
+    year.textContent = new Date().getFullYear();
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.16
+    });
+
+    fadeElements.forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
