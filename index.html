@@ -317,16 +317,23 @@
     }
 
     .project-preview {
-      height: 180px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.25), transparent 30%),
-        linear-gradient(135deg, #eef2ff, #f8fafc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-dark);
-      font-weight: 800;
-      font-size: 22px;
+      height: 220px;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-preview img {
+      transform: scale(1.03);
     }
 
     .project-body {
@@ -536,7 +543,7 @@
           <ul class="mini-list">
             <li><span class="dot"></span><span>Landing pages and business websites</span></li>
             <li><span class="dot"></span><span>HTML, CSS, JavaScript and responsive layouts</span></li>
-            <li><span class="dot"></span><span>Simple frontend interfaces and React basics</span></li>
+            <li><span class="dot"></span><span>Frontend and fullstack application basics</span></li>
             <li><span class="dot"></span><span>B2B lead lists, market research and databases</span></li>
           </ul>
         </aside>
@@ -557,7 +564,7 @@
           <div class="card fade-in">
             <h3>Development background</h3>
             <p>
-              I work with HTML, CSS, JavaScript, React, TypeScript basics, Next.js basics, WordPress basics and AI-assisted workflows. My focus is clean structure, responsive design and practical implementation.
+              I work with HTML, CSS, JavaScript, React, TypeScript, Node.js, Express.js, Prisma basics, Next.js basics, WordPress basics and AI-assisted workflows. My focus is clean structure, responsive design, practical implementation and simple fullstack application logic.
             </p>
           </div>
           <div class="card fade-in">
@@ -589,7 +596,11 @@
           </div>
           <div class="skill-card fade-in">
             <h3>React / TypeScript</h3>
-            <p>Basic. Simple components, frontend structure, basic typing and interface logic.</p>
+            <p>Basic / Intermediate. Components, frontend structure, typed data, interface logic and simple application architecture.</p>
+          </div>
+          <div class="skill-card fade-in">
+            <h3>Node.js / Express / Prisma</h3>
+            <p>Basic. Server routes, API logic, database models, Prisma schema and simple fullstack workflows.</p>
           </div>
           <div class="skill-card fade-in">
             <h3>WordPress</h3>
@@ -625,66 +636,89 @@
 
         <div class="projects-grid">
           <article class="project-card fade-in">
-            <div class="project-preview">B2B Base</div>
+            <div class="project-preview">
+              <img src="assets/b2b.png" alt="B2B Base project screenshot">
+            </div>
             <div class="project-body">
-              <h3>B2B Base – B2B Database Project</h3>
+              <h3>B2B Base – Fullstack B2B Database Platform</h3>
               <p>
-                My first commercial project focused on custom B2B company databases, lead lists and market research for sales outreach.
+                My first commercial project focused on custom B2B company databases, lead lists, market research and sales outreach workflows. I worked on product structure, UI/UX, frontend implementation, business logic and data-related functionality.
               </p>
-              <a class="project-link" href="https://client-r47h.vercel.app/" target="_blank" rel="noreferrer">View project</a>
+              <a class="project-link" href="https://client-r47h.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
               <div class="tags">
-                <span class="tag">Frontend</span>
-                <span class="tag">UI/UX</span>
+                <span class="tag">Fullstack</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">Prisma</span>
                 <span class="tag">B2B Data</span>
-                <span class="tag">Excel</span>
               </div>
             </div>
           </article>
 
           <article class="project-card fade-in">
-            <div class="project-preview">Landing Page</div>
+            <div class="project-preview">
+              <img src="assets/urban.png" alt="UrbanBite food court landing page screenshot">
+            </div>
             <div class="project-body">
-              <h3>Responsive Business Landing Page</h3>
+              <h3>UrbanFood – Interactive Food Court Landing Page</h3>
               <p>
-                A clean landing page concept for a small business with hero section, services, benefits, CTA and contact form structure.
+                A responsive and interactive landing page concept for a modern food court. The project includes mobile navigation, category filtering, dish search, add-to-cart interaction, quantity controls, dynamic total price and booking form validation.
               </p>
+              <a class="project-link" href="https://urban-food-five.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
+              <a class="project-link" href="https://github.com/RyasniyIlya/UrbanFood" target="_blank" rel="noreferrer">View GitHub</a>
               <div class="tags">
-                <span class="tag">HTML</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Vite</span>
                 <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Responsive</span>
+                <span class="tag">Search</span>
+                <span class="tag">Cart UI</span>
+                <span class="tag">Forms</span>
               </div>
             </div>
           </article>
 
           <article class="project-card fade-in">
-            <div class="project-preview">Market Research</div>
+            <div class="project-preview">
+              <img src="assets/clear.png" alt="Cleanora cleaning service landing page screenshot">
+            </div>
             <div class="project-body">
-              <h3>B2B Lead List & Market Database</h3>
+              <h3>Cleanora – Cleaning Service Booking Landing Page</h3>
               <p>
-                Structured database work for collecting, cleaning and organizing companies by niche, region and business criteria.
+                A responsive booking landing page for a cleaning service business. The project includes service cards, an interactive price calculator, booking form validation, FAQ accordion, testimonials, before/after gallery, hover animations and mobile navigation.
               </p>
+              <a class="project-link" href="https://clear-service.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
+              <a class="project-link" href="https://github.com/RyasniyIlya/ClearService" target="_blank" rel="noreferrer">View GitHub</a>
               <div class="tags">
-                <span class="tag">Research</span>
-                <span class="tag">Google Sheets</span>
-                <span class="tag">Data Cleaning</span>
-                <span class="tag">Lead Lists</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Vite</span>
+                <span class="tag">Responsive UI</span>
+                <span class="tag">Calculator</span>
+                <span class="tag">Form Validation</span>
               </div>
             </div>
           </article>
 
           <article class="project-card fade-in">
-            <div class="project-preview">AI Page</div>
+            <div class="project-preview">
+              <img src="assets/social.png" alt="Fullstack chat application screenshot">
+            </div>
             <div class="project-body">
-              <h3>AI-Assisted Landing Page Concept</h3>
+              <h3>Fullstack Chat Application</h3>
               <p>
-                A fast landing page prototype created with AI assistance and manually improved with frontend structure, CSS and responsive design.
+                A fullstack chat application created as a practical training project. The project helped me work with frontend structure, server-side logic, API routes, typed data, database models and the connection between client and backend.
               </p>
               <div class="tags">
-                <span class="tag">AI Tools</span>
-                <span class="tag">HTML/CSS</span>
-                <span class="tag">Copywriting</span>
-                <span class="tag">UI</span>
+                <span class="tag">Fullstack</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">Prisma</span>
+                <span class="tag">API</span>
               </div>
             </div>
           </article>
@@ -708,6 +742,10 @@
           <div class="card fade-in">
             <h3>Frontend Tasks</h3>
             <p>HTML/CSS/JS edits, responsive fixes, sections, simple components and page improvements.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>Fullstack Basics</h3>
+            <p>Simple React + Node.js application logic, Express API routes, Prisma models and basic client-server workflows.</p>
           </div>
           <div class="card fade-in">
             <h3>WordPress Edits</h3>
