@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Ilya Ryasniy, Web Developer and B2B Data Research Specialist." />
-  <title>Ilya Ryasniy | Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Ilya Ryasniy, Junior Full-stack Developer focused on React, TypeScript, Node.js, Express, Prisma and PostgreSQL." />
+  <title>Ilya Ryasniy | Junior Full-stack Developer</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f7f9fc;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --accent: #2563eb;
-      --accent-dark: #1d4ed8;
-      --card: #ffffff;
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+      --bg: #f5f1e8;
+      --paper: #fffaf0;
+      --ink: #151515;
+      --muted: #6d6559;
+      --line: #ddd2bd;
+      --accent: #0f766e;
+      --accent-2: #c2410c;
+      --deep: #111827;
+      --soft: #ebe3d4;
+      --shadow: 0 22px 60px rgba(42, 34, 22, 0.12);
+      --radius: 8px;
     }
 
     * {
@@ -30,9 +31,14 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 34px 34px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
       line-height: 1.6;
     }
 
@@ -42,26 +48,26 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1160px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     .header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      z-index: 30;
+      background: rgba(245, 241, 232, 0.88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
     }
 
     .nav {
-      height: 72px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -69,85 +75,122 @@
     }
 
     .logo {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      font-size: 22px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      font-size: 18px;
     }
 
     .logo span {
       color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      margin-top: 4px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       list-style: none;
       color: var(--muted);
-      font-size: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--ink);
     }
 
     .menu-btn {
       display: none;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius);
       padding: 9px 12px;
-      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
       cursor: pointer;
     }
 
     .hero {
-      padding: 92px 0 72px;
-      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+      padding: 86px 0 66px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      align-items: center;
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-panel,
+    .signal-panel,
+    .card,
+    .project-card,
+    .stack-card,
+    .roadmap-card,
+    .contact-box {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      padding: clamp(30px, 5vw, 54px);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(15, 118, 110, 0.22);
+      pointer-events: none;
     }
 
     .eyebrow {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--muted);
-      background: #fff;
-      font-size: 14px;
+      width: fit-content;
       margin-bottom: 20px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 7px 10px;
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 72px);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+    h1 {
+      max-width: 780px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.96;
+      letter-spacing: 0;
       margin-bottom: 24px;
     }
 
-    .hero h1 span {
-      color: var(--accent);
-    }
-
-    .hero p {
-      max-width: 660px;
+    .lead {
+      max-width: 730px;
       color: var(--muted);
-      font-size: 19px;
-      margin-bottom: 32px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      margin-bottom: 30px;
     }
 
-    .actions {
+    .actions,
+    .links-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .btn {
@@ -155,172 +198,201 @@
       align-items: center;
       justify-content: center;
       min-height: 46px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      transition: 0.2s ease;
+      padding: 12px 18px;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
+      background: var(--ink);
+      color: var(--paper);
     }
 
-    .btn-primary:hover {
-      background: var(--accent-dark);
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background: #fff;
-      color: var(--text);
+      background: transparent;
+      color: var(--ink);
     }
 
-    .btn-secondary:hover {
-      border-color: #cbd5e1;
-      transform: translateY(-1px);
-    }
-
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+    .signal-panel {
       border-radius: var(--radius);
       padding: 26px;
-      box-shadow: var(--shadow);
+      display: grid;
+      gap: 18px;
+      align-content: start;
     }
 
-    .hero-card h3 {
-      font-size: 18px;
-      margin-bottom: 16px;
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(15, 118, 110, 0.12);
+    }
+
+    .signal-panel h2 {
+      font-size: 28px;
+      line-height: 1.08;
     }
 
     .mini-list {
       display: grid;
-      gap: 12px;
+      gap: 10px;
       list-style: none;
       color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 15px;
     }
 
     .mini-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 8px;
     }
 
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--accent);
-      margin-top: 8px;
-      flex: 0 0 9px;
+    .mini-list li::before {
+      content: "/";
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      gap: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     section {
-      padding: 72px 0;
+      padding: 70px 0;
     }
 
     .section-head {
-      max-width: 720px;
-      margin-bottom: 34px;
+      max-width: 760px;
+      margin-bottom: 30px;
     }
 
     .section-label {
-      color: var(--accent);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 13px;
       margin-bottom: 10px;
+      color: var(--accent-2);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .section-head h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.02;
       margin-bottom: 14px;
     }
 
     .section-head p {
       color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 17px;
     }
 
-    .about {
-      background: var(--bg);
-    }
-
-    .about-grid {
+    .about-grid,
+    .stack-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
-    .card {
-      border: 1px solid var(--border);
+    .card,
+    .stack-card,
+    .roadmap-card {
       border-radius: var(--radius);
-      background: var(--card);
-      padding: 28px;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+      padding: 26px;
     }
 
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    .skills {
-      background: var(--bg-soft);
-    }
-
-    .skill-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .skill-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .skill-card h3 {
-      font-size: 17px;
+    .card h3,
+    .stack-card h3,
+    .roadmap-card h3 {
+      font-size: 22px;
       margin-bottom: 10px;
     }
 
-    .skill-card p {
+    .card p,
+    .roadmap-card p {
       color: var(--muted);
-      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .stack-list li,
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fffdf7;
+      padding: 7px 10px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .projects {
+      background: rgba(235, 227, 212, 0.55);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
 
     .project-card {
-      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
       border-radius: var(--radius);
       overflow: hidden;
-      background: #fff;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
     }
 
     .project-preview {
-      height: 220px;
-      background: linear-gradient(135deg, #eef2ff, #f8fafc);
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
+      min-height: 310px;
+      background: var(--soft);
+      border-right: 1px solid var(--line);
     }
 
     .project-preview img {
@@ -328,26 +400,62 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      display: block;
+      filter: saturate(0.92) contrast(1.02);
       transition: transform 0.3s ease;
     }
 
-    .project-card:hover .project-preview img {
-      transform: scale(1.03);
+    .project-card:hover img {
+      transform: scale(1.025);
     }
 
     .project-body {
-      padding: 24px;
+      padding: 28px;
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .project-kicker {
+      color: var(--accent-2);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .project-body h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.05;
     }
 
     .project-body p {
       color: var(--muted);
-      margin-bottom: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 7px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+    }
+
+    .project-link:hover {
+      color: var(--accent-2);
     }
 
     .tags {
@@ -356,72 +464,65 @@
       gap: 8px;
     }
 
-    .tag {
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
-      background: #fff;
-    }
-
-    .project-link {
-      display: inline-flex;
-      margin-bottom: 16px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .project-link:hover {
-      color: var(--accent-dark);
-    }
-
-    .services {
-      background: var(--bg-soft);
-    }
-
-    .services-grid {
+    .roadmap-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .roadmap-card {
+      min-height: 190px;
+    }
+
+    .contact {
+      padding-bottom: 86px;
     }
 
     .contact-box {
-      border-radius: 24px;
-      background: #111827;
-      color: #fff;
-      padding: 42px;
+      border-radius: var(--radius);
+      padding: clamp(28px, 5vw, 44px);
       display: grid;
       grid-template-columns: 1fr auto;
-      align-items: center;
       gap: 24px;
+      align-items: center;
+      background: var(--deep);
+      color: var(--paper);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.04;
     }
 
     .contact-box p {
-      color: #d1d5db;
+      max-width: 680px;
       margin-top: 10px;
-      max-width: 650px;
+      color: #d6d3c9;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
       justify-content: flex-end;
+      gap: 10px;
     }
 
     .contact-links a {
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 12px;
-      padding: 12px 16px;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 250, 240, 0.22);
+      border-radius: var(--radius);
+      padding: 11px 14px;
+      background: rgba(255, 250, 240, 0.08);
+      color: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
     }
 
     .footer {
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
       color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
     }
 
@@ -434,7 +535,7 @@
 
     .fade-in {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(16px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -443,15 +544,21 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
+      .project-card,
       .contact-box {
         grid-template-columns: 1fr;
       }
 
-      .skill-grid,
-      .services-grid {
+      .project-preview {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .roadmap-grid,
+      .stack-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -463,7 +570,7 @@
     @media (max-width: 720px) {
       .nav-links {
         position: fixed;
-        top: 72px;
+        top: 70px;
         left: 0;
         right: 0;
         display: none;
@@ -471,15 +578,16 @@
         align-items: flex-start;
         gap: 0;
         padding: 12px 16px;
-        background: #fff;
-        border-bottom: 1px solid var(--border);
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
       }
 
       .nav-links.open {
         display: flex;
       }
 
-      .nav-links li {
+      .nav-links li,
+      .nav-links a {
         width: 100%;
       }
 
@@ -493,17 +601,25 @@
       }
 
       .hero {
-        padding: 64px 0 52px;
+        padding: 46px 0 40px;
       }
 
-      .skill-grid,
-      .projects-grid,
-      .services-grid {
+      .hero-panel::before {
+        inset: 10px;
+      }
+
+      .stats,
+      .roadmap-grid,
+      .stack-grid {
         grid-template-columns: 1fr;
       }
 
-      .contact-box {
-        padding: 28px;
+      section {
+        padding: 52px 0;
+      }
+
+      .project-preview {
+        min-height: 230px;
       }
     }
   </style>
@@ -511,13 +627,16 @@
 <body>
   <header class="header">
     <div class="container nav">
-      <a href="#home" class="logo">Ilya<span>Ryasniy</span></a>
+      <a class="logo" href="#home">
+        Ilya Ryasniy
+        <span>Full-stack portfolio</span>
+      </a>
       <button class="menu-btn" id="menuBtn" aria-label="Open navigation">Menu</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#stack">Stack</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -526,131 +645,195 @@
   <main>
     <section class="hero" id="home">
       <div class="container hero-grid">
-        <div class="fade-in">
-          <div class="eyebrow">Web Developer • B2B Data Research • AI Tools</div>
-          <h1>Clean websites and practical digital solutions for business.</h1>
-          <p>
-            I am Ilya Ryasniy. I create landing pages, simple business websites, frontend interfaces and structured B2B databases for sales, outreach and market research.
+        <div class="hero-panel fade-in">
+          <div class="eyebrow">Junior Full-stack Developer</div>
+          <h1>React and Node.js projects with business logic, APIs and clean UI.</h1>
+          <p class="lead">
+            I build practical frontend and fullstack projects with React, TypeScript, Node.js, Express, Prisma and PostgreSQL. My focus is authentication flows, REST APIs, database models, responsive interfaces and fast growth through real project work.
           </p>
           <div class="actions">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="https://github.com/RyasniyIlya" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="mailto:ryasniyilya@gmail.com">Contact</a>
           </div>
         </div>
 
-        <aside class="hero-card fade-in">
-          <h3>Current focus</h3>
+        <aside class="signal-panel fade-in">
+          <div class="availability"><span class="pulse"></span>Open to Junior React/Node.js roles</div>
+          <h2>Positioning for hiring</h2>
           <ul class="mini-list">
-            <li><span class="dot"></span><span>Landing pages and business websites</span></li>
-            <li><span class="dot"></span><span>HTML, CSS, JavaScript and responsive layouts</span></li>
-            <li><span class="dot"></span><span>Frontend and fullstack application basics</span></li>
-            <li><span class="dot"></span><span>B2B lead lists, market research and databases</span></li>
+            <li>React + TypeScript interfaces</li>
+            <li>Node.js + Express REST APIs</li>
+            <li>Prisma + PostgreSQL data models</li>
+            <li>JWT, cookies and protected routes in progress</li>
+            <li>AI-assisted code review and learning workflow</li>
           </ul>
+          <div class="stats">
+            <div class="stat">
+              <strong>4</strong>
+              <span>public projects</span>
+            </div>
+            <div class="stat">
+              <strong>3y</strong>
+              <span>self-practice</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>commercial case</span>
+            </div>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section class="about" id="about">
+    <section id="about">
       <div class="container">
         <div class="section-head fade-in">
           <div class="section-label">About</div>
-          <h2>Ilya Ryasniy — beginner web developer with practical commercial experience.</h2>
+          <h2>A junior developer building toward serious fullstack work.</h2>
           <p>
-            I have 3 years of self-practice in web development and hands-on experience from small projects and my first commercial project, B2B Base.
+            I am strengthening the exact fundamentals needed for React/Node.js roles: API design, authentication, database relations, clean project structure, deployment and readable code.
           </p>
         </div>
 
         <div class="about-grid">
-          <div class="card fade-in">
-            <h3>Development background</h3>
+          <article class="card fade-in">
+            <h3>Development profile</h3>
             <p>
-              I work with HTML, CSS, JavaScript, React, TypeScript, Node.js, Express.js, Prisma basics, Next.js basics, WordPress basics and AI-assisted workflows. My focus is clean structure, responsive design, practical implementation and simple fullstack application logic.
+              I work with React, TypeScript, JavaScript, Node.js, Express, Prisma and PostgreSQL basics. My strongest current side is building practical interfaces and connecting them with backend concepts, data models and user flows.
             </p>
-          </div>
-          <div class="card fade-in">
-            <h3>Business experience</h3>
+          </article>
+          <article class="card fade-in">
+            <h3>Business context</h3>
             <p>
-              B2B Base is my first commercial project. It helped me understand how digital products work in real business: offer structure, UI/UX, client needs, service presentation, data organization and ongoing project support.
+              B2B Base gave me useful commercial context: product structure, client needs, sales data, service presentation and the difference between a code exercise and a product someone can actually understand.
             </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="skills" id="skills">
+    <section id="stack">
       <div class="container">
         <div class="section-head fade-in">
-          <div class="section-label">Skills</div>
-          <h2>Technical stack and practical tools.</h2>
-          <p>My stack is focused on frontend development, simple websites, data research and AI-assisted execution.</p>
+          <div class="section-label">Stack</div>
+          <h2>Skills grouped the way a fullstack team reads them.</h2>
+          <p>
+            The goal is not a long list of buzzwords. The goal is a clear signal: frontend, backend, database, tooling and growth direction.
+          </p>
         </div>
 
-        <div class="skill-grid">
-          <div class="skill-card fade-in">
-            <h3>HTML / CSS</h3>
-            <p>Intermediate. Page structure, sections, responsive layouts, forms and clean styling.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>JavaScript</h3>
-            <p>Basic / Intermediate. DOM logic, menus, forms, simple interactions and dynamic behavior.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>React / TypeScript</h3>
-            <p>Basic / Intermediate. Components, frontend structure, typed data, interface logic and simple application architecture.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>Node.js / Express / Prisma</h3>
-            <p>Basic. Server routes, API logic, database models, Prisma schema and simple fullstack workflows.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>WordPress</h3>
-            <p>Basic. Landing pages, Elementor-style edits, content updates, forms and basic SEO.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>AI Tools</h3>
-            <p>Intermediate. Page structure, content drafts, design ideas, code improvement and visuals.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>B2B Research</h3>
-            <p>Intermediate. Company research, lead lists, market segmentation and database structure.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>Excel / Sheets</h3>
-            <p>Intermediate. Data cleaning, columns, filtering, duplicate removal and business-ready files.</p>
-          </div>
-          <div class="skill-card fade-in">
-            <h3>SEO Basics</h3>
-            <p>Basic. Headings, page titles, meta descriptions, content structure and simple optimization.</p>
-          </div>
+        <div class="stack-grid">
+          <article class="stack-card fade-in">
+            <h3>Frontend</h3>
+            <ul class="stack-list">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Responsive UI</li>
+              <li>Forms</li>
+            </ul>
+          </article>
+          <article class="stack-card fade-in">
+            <h3>Backend</h3>
+            <ul class="stack-list">
+              <li>Node.js</li>
+              <li>Express.js</li>
+              <li>REST API</li>
+              <li>Middleware</li>
+              <li>JWT concepts</li>
+              <li>Auth flows</li>
+            </ul>
+          </article>
+          <article class="stack-card fade-in">
+            <h3>Database</h3>
+            <ul class="stack-list">
+              <li>PostgreSQL basics</li>
+              <li>Prisma ORM</li>
+              <li>Relations</li>
+              <li>Migrations</li>
+              <li>Seed data</li>
+            </ul>
+          </article>
+          <article class="stack-card fade-in">
+            <h3>Tools</h3>
+            <ul class="stack-list">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>Vercel</li>
+              <li>npm</li>
+              <li>AI coding tools</li>
+              <li>Code review</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section class="projects" id="projects">
       <div class="container">
         <div class="section-head fade-in">
           <div class="section-label">Projects</div>
-          <h2>Selected work and portfolio cases.</h2>
-          <p>These projects show my practical experience in web development, frontend structure and B2B data work.</p>
+          <h2>Selected projects for React and Node.js applications.</h2>
+          <p>
+            The first projects show fullstack direction and application logic. Landing pages stay here as proof of UI, forms and deployment practice.
+          </p>
         </div>
 
         <div class="projects-grid">
           <article class="project-card fade-in">
             <div class="project-preview">
+              <img src="./assets/chat-app.png" alt="Secure social application screenshot">
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">Main fullstack signal</div>
+              <h3>Secure Mini Social</h3>
+              <p>
+                A fullstack/social practice project focused on secure user flows, client-server architecture and backend fundamentals.
+              </p>
+              <ul class="feature-list">
+                <li>Practiced authentication flow, protected pages and user state.</li>
+                <li>Worked with React, TypeScript and backend-oriented project structure.</li>
+                <li>Used the project as a base for JWT, cookies, roles and profile features.</li>
+              </ul>
+              <div class="project-links">
+                <a class="project-link" href="https://secure-mini-social-clear.vercel.app" target="_blank" rel="noreferrer">Live demo</a>
+                <a class="project-link" href="https://github.com/RyasniyIlya/secure-mini-social-clear" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+              <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Fullstack</span>
+                <span class="tag">Auth</span>
+                <span class="tag">Security</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-preview">
               <img src="./assets/b2b-base.png" alt="B2B Base project screenshot">
             </div>
             <div class="project-body">
-              <h3>B2B Base – Fullstack B2B Database Platform</h3>
+              <div class="project-kicker">Commercial context</div>
+              <h3>B2B Base</h3>
               <p>
-                My first commercial project focused on custom B2B company databases, lead lists, market research and sales outreach workflows. I worked on product structure, UI/UX, frontend implementation, business logic and data-related functionality.
+                My first commercial project focused on custom B2B company databases, lead lists, market research and sales workflows.
               </p>
-              <a class="project-link" href="https://client-r47h.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
+              <ul class="feature-list">
+                <li>Worked with product structure, UI/UX and business logic.</li>
+                <li>Connected technical decisions with client-facing service value.</li>
+                <li>Practiced data organization and B2B workflow thinking.</li>
+              </ul>
+              <div class="project-links">
+                <a class="project-link" href="https://client-r47h.vercel.app/" target="_blank" rel="noreferrer">Live demo</a>
+              </div>
               <div class="tags">
-                <span class="tag">Fullstack</span>
                 <span class="tag">React</span>
                 <span class="tag">TypeScript</span>
                 <span class="tag">Node.js</span>
-                <span class="tag">Express.js</span>
                 <span class="tag">Prisma</span>
                 <span class="tag">B2B Data</span>
               </div>
@@ -659,66 +842,58 @@
 
           <article class="project-card fade-in">
             <div class="project-preview">
-              <img src="./assets/urbanbite.png" alt="UrbanBite food court landing page screenshot">
+              <img src="./assets/urbanbite.png" alt="UrbanFood food court interface screenshot">
             </div>
             <div class="project-body">
-              <h3>UrbanFood – Interactive Food Court Landing Page</h3>
+              <div class="project-kicker">Frontend application UI</div>
+              <h3>UrbanFood</h3>
               <p>
-                A responsive and interactive landing page concept for a modern food court. The project includes mobile navigation, category filtering, dish search, add-to-cart interaction, quantity controls, dynamic total price and booking form validation.
+                Interactive food court interface with product browsing, search, cart logic and booking form validation.
               </p>
-              <a class="project-link" href="https://urban-food-five.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
-              <a class="project-link" href="https://github.com/RyasniyIlya/UrbanFood" target="_blank" rel="noreferrer">View GitHub</a>
+              <ul class="feature-list">
+                <li>Built responsive React + TypeScript UI with Vite.</li>
+                <li>Added category filtering, dish search and dynamic cart total.</li>
+                <li>Practiced state-driven user flows and form validation.</li>
+              </ul>
+              <div class="project-links">
+                <a class="project-link" href="https://urban-food-five.vercel.app/" target="_blank" rel="noreferrer">Live demo</a>
+                <a class="project-link" href="https://github.com/RyasniyIlya/UrbanFood" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
               <div class="tags">
                 <span class="tag">React</span>
                 <span class="tag">TypeScript</span>
                 <span class="tag">Vite</span>
-                <span class="tag">CSS</span>
                 <span class="tag">Search</span>
                 <span class="tag">Cart UI</span>
-                <span class="tag">Forms</span>
               </div>
             </div>
           </article>
 
           <article class="project-card fade-in">
             <div class="project-preview">
-              <img src="./assets/cleanora.png" alt="Cleanora cleaning service landing page screenshot">
+              <img src="./assets/cleanora.png" alt="Cleanora booking landing page screenshot">
             </div>
             <div class="project-body">
-              <h3>Cleanora – Cleaning Service Booking Landing Page</h3>
+              <div class="project-kicker">Business website</div>
+              <h3>Cleanora / ClearService</h3>
               <p>
-                A responsive booking landing page for a cleaning service business. The project includes service cards, an interactive price calculator, booking form validation, FAQ accordion, testimonials, before/after gallery, hover animations and mobile navigation.
+                Responsive booking website for a cleaning service with service cards, calculator and contact-oriented user flow.
               </p>
-              <a class="project-link" href="https://clear-service.vercel.app/" target="_blank" rel="noreferrer">View live project</a>
-              <a class="project-link" href="https://github.com/RyasniyIlya/ClearService" target="_blank" rel="noreferrer">View GitHub</a>
+              <ul class="feature-list">
+                <li>Implemented price calculator and booking form validation.</li>
+                <li>Added FAQ accordion, testimonials, gallery and mobile navigation.</li>
+                <li>Practiced practical client-style frontend work.</li>
+              </ul>
+              <div class="project-links">
+                <a class="project-link" href="https://clear-service.vercel.app/" target="_blank" rel="noreferrer">Live demo</a>
+                <a class="project-link" href="https://github.com/RyasniyIlya/ClearService" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
               <div class="tags">
                 <span class="tag">React</span>
                 <span class="tag">TypeScript</span>
                 <span class="tag">Vite</span>
                 <span class="tag">Responsive UI</span>
-                <span class="tag">Calculator</span>
-                <span class="tag">Form Validation</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card fade-in">
-            <div class="project-preview">
-              <img src="./assets/chat-app.png" alt="Fullstack chat application screenshot">
-            </div>
-            <div class="project-body">
-              <h3>Fullstack Chat Application</h3>
-              <p>
-                A fullstack chat application created as a practical training project. The project helped me work with frontend structure, server-side logic, API routes, typed data, database models and the connection between client and backend.
-              </p>
-              <div class="tags">
-                <span class="tag">Fullstack</span>
-                <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">Express.js</span>
-                <span class="tag">Prisma</span>
-                <span class="tag">API</span>
+                <span class="tag">Forms</span>
               </div>
             </div>
           </article>
@@ -726,61 +901,51 @@
       </div>
     </section>
 
-    <section class="services" id="services">
+    <section id="roadmap">
       <div class="container">
         <div class="section-head fade-in">
-          <div class="section-label">Services</div>
-          <h2>What I can help with.</h2>
-          <p>Simple, practical services for businesses that need a clear web presence or structured data.</p>
+          <div class="section-label">Roadmap</div>
+          <h2>What I am improving now.</h2>
+          <p>
+            This is the next layer that turns project practice into stronger fullstack engineering.
+          </p>
         </div>
 
-        <div class="services-grid">
-          <div class="card fade-in">
-            <h3>Landing Pages</h3>
-            <p>Clean responsive landing pages for services, products, small businesses and digital offers.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>Frontend Tasks</h3>
-            <p>HTML/CSS/JS edits, responsive fixes, sections, simple components and page improvements.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>Fullstack Basics</h3>
-            <p>Simple React + Node.js application logic, Express API routes, Prisma models and basic client-server workflows.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>WordPress Edits</h3>
-            <p>Simple WordPress pages, content updates, Elementor edits, forms and basic SEO setup.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>B2B Databases</h3>
-            <p>Company databases, lead lists, market research and structured Excel/Google Sheets files.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>AI-Assisted Assets</h3>
-            <p>Landing page concepts, content structures, digital guides and quick visual prototypes.</p>
-          </div>
-          <div class="card fade-in">
-            <h3>Project Support</h3>
-            <p>Ongoing improvements, small updates, communication, testing and maintenance support.</p>
-          </div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card fade-in">
+            <h3>Auth</h3>
+            <p>JWT, access and refresh tokens, cookies, middleware, logout flow and protected routes.</p>
+          </article>
+          <article class="roadmap-card fade-in">
+            <h3>Database</h3>
+            <p>PostgreSQL joins, relations, indexes, transactions, Prisma migrations and seed data.</p>
+          </article>
+          <article class="roadmap-card fade-in">
+            <h3>Deployment</h3>
+            <p>Docker, Docker Compose, environment variables and one-command local project startup.</p>
+          </article>
+          <article class="roadmap-card fade-in">
+            <h3>Next step</h3>
+            <p>Next.js App Router, server components, server actions, RBAC and real-time features.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="contact" id="contact">
       <div class="container">
         <div class="contact-box fade-in">
           <div>
-            <h2>Let’s build something practical.</h2>
+            <h2>Open to Junior Full-stack and React/Node.js opportunities.</h2>
             <p>
-              I can help with landing pages, simple websites, frontend fixes, WordPress edits and B2B data research.
+              Remote roles, internships, trainee programs and project-based collaboration. I am focused on fast growth, clear communication and practical engineering work.
             </p>
           </div>
           <div class="contact-links">
             <a href="mailto:ryasniyilya@gmail.com">Email</a>
+            <a href="https://github.com/RyasniyIlya" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/ilya-ryasniy-624636406/" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="https://www.upwork.com/freelancers/~0173b7cc5f6f36d04a" target="_blank" rel="noreferrer">Upwork</a>
-            <a href="https://github.com/RyasniyIlya" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </div>
@@ -789,39 +954,39 @@
 
   <footer class="footer">
     <div class="container footer-row">
-      <span>© <span id="year"></span> Ilya Ryasniy</span>
-      <span>Built with vanilla HTML, CSS and JavaScript.</span>
+      <span>(c) <span id="year"></span> Ilya Ryasniy</span>
+      <span>Built with HTML, CSS and JavaScript. Deployed on Vercel.</span>
     </div>
   </footer>
 
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const year = document.getElementById('year');
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const year = document.getElementById("year");
 
     year.textContent = new Date().getFullYear();
 
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
     });
 
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
       });
     });
 
-    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeElements = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.16
+      threshold: 0.14
     });
 
     fadeElements.forEach((element) => observer.observe(element));
